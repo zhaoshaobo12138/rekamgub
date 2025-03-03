@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>
+    8月代码文档 | BugMaker の Blog
+  </title>
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <meta name="theme-color" content="#4184f3">
+  
+  
+  <link href="https://gitee.com/rekamgub/image/raw/master/blog/favicon.png" rel="icon" />
+  
+
+  
+<link rel="stylesheet" href="/css/highlight.light.css">
+
+  
+<link rel="stylesheet" href="/css/prism-customize.css">
+
+  
+<link rel="stylesheet" href="/css/nav-icon.css">
+
+  
+<link rel="stylesheet" href="/css/waves.min.css">
+
+  
+<link rel="stylesheet" href="/css/jquery.tocify.css">
+
+  
+<link rel="stylesheet" href="/css/main.css">
+
+  
+<link rel="stylesheet" href="/css/nav-indicator.css">
+
+  
+<link rel="stylesheet" href="/css/twikoo.css">
+
+  
+<link rel="stylesheet" href="/css/search.css">
+
+  
+  
+
+  
+
+  </meta>
+  </meta>
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
+  
+<script src="/js/comment.js"></script>
+
+  
+<script src="/js/copy.js"></script>
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+	<body>
+		<header>
+			<!-- cover image or sth. -->
+		</header>
+		<div id="main" class="m-scene">
+			
+<div class="nav-wrapper" id="header">
+
+    <div class="container">
+        <nav>
+            
+            
+            <div class="logo wave">
+                <a href="/" id="logo">
+                    BugMaker の Blog
+                </a>
+            </div>
+
+            
+
+            <div class="nav-toggle-icon" >
+                <div class="material-hamburger">
+                    <span>
+                    </span>
+                    <span>
+                    </span>
+                    <span>
+                    </span>
+                </div>
+            </div>
+
+            <div class="menu-wrapper">
+                <div class="nav-indicator">
+                </div>
+                <ul class="menus">
+                    
+                     
+                        <li>
+                            <a class="wave " href="/">
+                                首页
+                            </a>
+                        </li>
+                     
+                        <li>
+                            <a class="wave " href="/archives">
+                                归档
+                            </a>
+                        </li>
+                     
+                        <li>
+                            <a class="wave " href="/about">
+                                关于
+                            </a>
+                        </li>
+                     
+                        <li>
+                            <a class="wave " href="/message">
+                                留言
+                            </a>
+                        </li>
+                     
+                        <li>
+                            <a class="wave " href="/search">
+                                搜索
+                            </a>
+                        </li>
+                     
+                    
+                   
+                </ul>
+            </div>
+
+        </nav>
+    </div>
+</div>
+
+
+				<div class="container content">
+					<div class="scene_element scene_element--fadein">
+						<div class="row">
+  <div class="main main-article">
+    <article>
+
+      
+        <header class="post-header no-cover">
+      
+        </header>
+
+      <!-- 标题 -->
+      <h1 class="post-title">
+        8月代码文档
+      </h1>
+
+      <section class="post-info post-info-bottom">
+
+        <!-- 发布时间 -->
+        <span class="post-date">
+          <span class="post-date-text">
+            发布于: 2023-03-17
+          </span>
+        </span>
+        
+        <!-- 分类 -->
+        
+          <span class="post-category">分类:
+            <a class="article-category-link" href="/categories/%E5%88%86%E7%B1%BB/">分类</a>
+          </span>
+        
+
+        <!-- 标签 -->
+        
+          <span class="post-tags">
+            <ul class="post-tag-list" itemprop="keywords"><li class="post-tag-list-item"><a class="post-tag-list-link" href="/tags/%E6%A0%87%E7%AD%BE/" rel="tag">标签</a></li></ul>
+          </span>
+        
+
+        <!-- 阅读量统计 -->
+        
+
+      </section>
+
+      <!-- 正文 -->
+      <section class="post-content">
+        <h1 id="1-原型模式"><a href="#1-原型模式" class="headerlink" title="1. 原型模式"></a>1. 原型模式</h1><p>原型模式主要用于<strong>对象的复制</strong>，实现一个接口（实现 Cloneable 接口）， 重写一个方法（重写 Object 类中的 clone 方法），即完成了原型模式。 原型模式中的拷贝分为”浅拷贝”和”深拷贝”。</p>
+<p><strong>浅拷贝</strong>: 对值类型的成员变量进行值的复制，对引用类型的成员变量只复制引用,不复制引用的对象。</p>
+<p><strong>深拷贝</strong>: 对值类型的成员变量进行值的复制，对引用类型的成员变量也进行引用对象的复制。</p>
+<h2 id="1-1-浅拷贝"><a href="#1-1-浅拷贝" class="headerlink" title="1.1 浅拷贝"></a>1.1 浅拷贝</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.epoint.common.util;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.slf4j.Logger;</span><br><span class="line"><span class="keyword">import</span> org.slf4j.LoggerFactory;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 浅拷贝-原型模式</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> zsbo</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@version</span> v1.0</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2021/9/2 08:47</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ISimplePrototype</span> <span class="keyword">implements</span> <span class="title class_">Cloneable</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">Logger</span> <span class="variable">log</span> <span class="operator">=</span> LoggerFactory.getLogger(IDeepPrototype.class);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> ArrayList&lt;String&gt; list = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;String&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> ISimplePrototype <span class="title function_">clone</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">ISimplePrototype</span> <span class="variable">clone</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            clone = (ISimplePrototype) <span class="built_in">super</span>.clone();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">catch</span> (CloneNotSupportedException e) &#123;</span><br><span class="line">            log.error(e.getMessage(), e);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> clone;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> ArrayList&lt;String&gt; <span class="title function_">getList</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> list;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setList</span><span class="params">(ArrayList&lt;String&gt; list)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.list = list;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">display</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">for</span> (String str:list) &#123;</span><br><span class="line">            System.out.print(str+<span class="string">&quot;,&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="1-2-深拷贝"><a href="#1-2-深拷贝" class="headerlink" title="1.2 深拷贝"></a>1.2 深拷贝</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.epoint.common.util;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.slf4j.Logger;</span><br><span class="line"><span class="keyword">import</span> org.slf4j.LoggerFactory;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 深拷贝-原型模式</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> zsbo</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@version</span> v1.0</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2021/9/2 09:08</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">IDeepPrototype</span> <span class="keyword">implements</span> <span class="title class_">Cloneable</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">Logger</span> <span class="variable">log</span> <span class="operator">=</span> LoggerFactory.getLogger(IDeepPrototype.class);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> ArrayList&lt;String&gt; list = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;String&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> IDeepPrototype <span class="title function_">clone</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">IDeepPrototype</span> <span class="variable">clone</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            clone = (IDeepPrototype) <span class="built_in">super</span>.clone();</span><br><span class="line">            clone.list = (ArrayList&lt;String&gt;) <span class="built_in">this</span>.list.clone();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">catch</span> (CloneNotSupportedException e) &#123;</span><br><span class="line">            log.error(e.getMessage(), e);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> clone;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> ArrayList&lt;String&gt; <span class="title function_">getList</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> list;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setList</span><span class="params">(ArrayList&lt;String&gt; list)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.list = list;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">display</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">for</span> (String str:list) &#123;</span><br><span class="line">            System.out.print(str+<span class="string">&quot;,&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="1-3-测试类"><a href="#1-3-测试类" class="headerlink" title="1.3 测试类"></a>1.3 测试类</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.epoint.common.util;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 原型模式-测试类</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> zsbo</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@version</span> v1.0</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2021/9/2 08:49</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">// 浅拷贝</span></span><br><span class="line">        <span class="type">ISimplePrototype</span> <span class="variable">iSimplePrototype</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ISimplePrototype</span>();</span><br><span class="line">        <span class="type">ISimplePrototype</span> <span class="variable">simpleClone</span> <span class="operator">=</span> iSimplePrototype.clone();</span><br><span class="line">        iSimplePrototype.getList().add(<span class="string">&quot;tmp1&quot;</span>);</span><br><span class="line">        iSimplePrototype.display();<span class="comment">// tmp1,</span></span><br><span class="line">        simpleClone.getList().add(<span class="string">&quot;tmp2&quot;</span>);</span><br><span class="line">        iSimplePrototype.display();<span class="comment">// tmp1,tmp2,</span></span><br><span class="line">        simpleClone.display();<span class="comment">// tmp1,tmp2,</span></span><br><span class="line">        System.out.println(iSimplePrototype.getList() == simpleClone.getList());<span class="comment">// true</span></span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">&quot;------------------------------------&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 深拷贝</span></span><br><span class="line">        <span class="type">IDeepPrototype</span> <span class="variable">iDeepPrototype</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">IDeepPrototype</span>();</span><br><span class="line">        <span class="type">IDeepPrototype</span> <span class="variable">deepClone</span> <span class="operator">=</span> iDeepPrototype.clone();</span><br><span class="line">        iDeepPrototype.getList().add(<span class="string">&quot;tmp1&quot;</span>);</span><br><span class="line">        iDeepPrototype.display();<span class="comment">// tmp1,</span></span><br><span class="line">        deepClone.getList().add(<span class="string">&quot;tmp2&quot;</span>);</span><br><span class="line">        iDeepPrototype.display();<span class="comment">// tmp1,</span></span><br><span class="line">        deepClone.display();<span class="comment">// tmp2,</span></span><br><span class="line">        System.out.println(iDeepPrototype.getList() == deepClone.getList());<span class="comment">// false</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="1-4-和单例模式关系"><a href="#1-4-和单例模式关系" class="headerlink" title="1.4 和单例模式关系"></a>1.4 和单例模式关系</h2><p>这两种设计模式都是处理对象创建的设计模式，<strong>区别</strong>在于:</p>
+<p>原型模式是在已指定对象的基础上，然后通过拷贝这些原型对象创建新的对象；而单例模式模式的核心是将类的构造方法私有化，之后在类的内部产生实例化对象，并通过静态方法返回实例化对象的应用。</p>
+<h1 id="2-Redis"><a href="#2-Redis" class="headerlink" title="2. Redis"></a>2. Redis</h1><p>Redis是一个Key-Value的内存数据库（NoSQL），同时具备持久化的能力。同时，Redis提供面向多种语言的API，并且诸如Spring这样的框架已经给予Redis很好的支持，我们常用（Java）的Redis Client工具是Jedis。</p>
+<h2 id="2-1-使用场景"><a href="#2-1-使用场景" class="headerlink" title="2.1 使用场景"></a>2.1 使用场景</h2><h3 id="2-1-1-计数器"><a href="#2-1-1-计数器" class="headerlink" title="2.1.1 计数器"></a>2.1.1 计数器</h3><p>可以对 String 进行自增自减运算，从而实现计数器功能。</p>
+<p>Redis 这种内存型数据库的读写性能非常高，很适合存储频繁读写的计数量。</p>
+<h3 id="2-1-2-缓存"><a href="#2-1-2-缓存" class="headerlink" title="2.1.2 缓存"></a>2.1.2 缓存</h3><p>将热点数据放到内存中，设置内存的最大使用量以及淘汰策略来保证缓存的命中率。</p>
+<h3 id="2-1-3-会话缓存"><a href="#2-1-3-会话缓存" class="headerlink" title="2.1.3 会话缓存"></a>2.1.3 会话缓存</h3><p>可以使用 Redis 来统一存储多台应用服务器的会话信息。</p>
+<p>当应用服务器不再存储用户的会话信息，也就不再具有状态，一个用户可以请求任意一个应用服务器，从而更容易实现高可用性以及可伸缩性。</p>
+<h3 id="2-1-4-全页缓存（FPC）"><a href="#2-1-4-全页缓存（FPC）" class="headerlink" title="2.1.4 全页缓存（FPC）"></a>2.1.4 全页缓存（FPC）</h3><p>除基本的会话token之外，Redis还提供很简便的FPC平台。</p>
+<p>以Magento为例，Magento提供一个插件来使用Redis作为全页缓存后端。此外，对WordPress的用户来说，Pantheon有一个非常好的插件 wp-redis，这个插件能帮助你以最快速度加载你曾浏览过的页面。</p>
+<h3 id="2-1-5-查找表"><a href="#2-1-5-查找表" class="headerlink" title="2.1.5 查找表"></a>2.1.5 查找表</h3><p>例如 DNS 记录就很适合使用 Redis 进行存储。</p>
+<p>查找表和缓存类似，也是利用了 Redis 快速的查找特性。但是查找表的内容不能失效，而缓存的内容可以失效，因为缓存不作为可靠的数据来源。</p>
+<h3 id="2-1-6-消息队列-发布-x2F-订阅功能"><a href="#2-1-6-消息队列-发布-x2F-订阅功能" class="headerlink" title="2.1.6 消息队列(发布&#x2F;订阅功能)"></a>2.1.6 消息队列(发布&#x2F;订阅功能)</h3><p>List 是一个双向链表，可以通过 lpush 和 rpop 写入和读取消息</p>
+<p>不过最好使用 Kafka、RabbitMQ 等消息中间件。</p>
+<h3 id="2-1-7-分布式锁实现"><a href="#2-1-7-分布式锁实现" class="headerlink" title="2.1.7 分布式锁实现"></a>2.1.7 分布式锁实现</h3><p>在分布式场景下，无法使用单机环境下的锁来对多个节点上的进程进行同步。</p>
+<p>可以使用 Redis 自带的 SETNX 命令实现分布式锁，除此之外，还可以使用官方提供的 RedLock 分布式锁实现。</p>
+<h3 id="2-1-8-其它"><a href="#2-1-8-其它" class="headerlink" title="2.1.8 其它"></a>2.1.8 其它</h3><p>Set 可以实现交集、并集等操作，从而实现共同好友等功能。</p>
+<p>ZSet 可以实现有序性操作，从而实现排行榜等功能。</p>
+<h2 id="2-2-java客户端"><a href="#2-2-java客户端" class="headerlink" title="2.2 java客户端"></a>2.2 java客户端</h2><h3 id="2-2-1-Redis请求通信协议"><a href="#2-2-1-Redis请求通信协议" class="headerlink" title="2.2.1 Redis请求通信协议"></a>2.2.1 Redis请求通信协议</h3><p>Redis客户端与服务端通信使用 RESP(REdis Serialization Protocol)协议</p>
+<p>它是一个序列化协议，支持如下几种数据类型，具体类型判断通过第一个字节判断，之间通过”\r\n”来分隔</p>
+<ul>
+<li>简单字符串 以”+” 开头</li>
+<li>错误类型 以”-“ 开头</li>
+<li>整数 以”:” 开头</li>
+<li>块字符串 以”$” 开头</li>
+<li>数组 以”*” 开头</li>
+</ul>
+<p>客户端每次发送一个块字符串数组到服务端，服务端根据命令执行后返回结果</p>
+<p><strong>简单字符串</strong></p>
+<p>以”+”字符开头，后面接实际字符串，最后以”\r\n”结尾</p>
+<p>因为字符是通过’\r\n’来判断结尾的，所以此种类型中的字符串内容就不能包含这特殊字符，如果有需要可以使用块字符串类型</p>
+<p>例子：<code>+OK\r\n</code></p>
+<p><strong>错误类型</strong></p>
+<p>以”-“字符开头，后面接着错误错误信息，最后以”\r\n”结尾</p>
+<p>例子：<code>-Error message\r\n</code></p>
+<p><strong>整数</strong></p>
+<p>以”:”字符开头，数值，，最后以”\r\n”结尾</p>
+<p>例子：<code>:1000\r\n</code></p>
+<p><strong>块字符串</strong></p>
+<p>以”$”字符开头，后面是字符串的实际长度，之后以”\r\n”分隔，接着是字符串内容，最后以’\r\n’结尾</p>
+<p>例子：空字符串：<code>$0\r\n\r\n</code>     Null(不存在的值)：<code>$-1\r\n</code></p>
+<p><strong>数组</strong></p>
+<p>以”*”开头，后面是数组长度，之后以”\r\n”分隔，后面是具体的其他的数据值(数据类型不要求一致)</p>
+<p>例子：空数组：<code>*0\r\n</code>       队列阻塞超时：<code>*-1\r\n</code></p>
+<h3 id="2-2-2-使用过程中的常见问题及解决"><a href="#2-2-2-使用过程中的常见问题及解决" class="headerlink" title="2.2.2 使用过程中的常见问题及解决"></a>2.2.2 使用过程中的常见问题及解决</h3><p><strong>无法从连接池获取到Jedis连接</strong></p>
+<p>JedisPool默认的maxTotal值为8，下面代码从JedisPool中获取了8个Jedis资源，但是没有归还资源。因此，当第9次尝试获取Jedis资源的时候，则无法调用jedisPool.getResource().ping()。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">GenericObjectPoolConfig</span> <span class="variable">poolConfig</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">GenericObjectPoolConfig</span>();</span><br><span class="line"><span class="type">JedisPool</span> <span class="variable">jedisPool</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">JedisPool</span>(poolConfig, <span class="string">&quot;127.0.0.1&quot;</span>, <span class="number">6379</span>);</span><br><span class="line"><span class="comment">//向JedisPool借用8次连接，但是没有执行归还操作。</span></span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; <span class="number">8</span>; i++) &#123;</span><br><span class="line">    <span class="type">Jedis</span> <span class="variable">jedis</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        jedis = jedisPool.getResource();</span><br><span class="line">        jedis.ping();</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">        logger.error(e.getMessage(), e);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">jedisPool.getResource().ping();</span><br></pre></td></tr></table></figure>
+
+<p>正确示例如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Jedis</span> <span class="variable">jedis</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    jedis = jedisPool.getResource();</span><br><span class="line">    <span class="comment">//具体的命令</span></span><br><span class="line">    jedis.executeCommand()</span><br><span class="line">&#125; </span><br><span class="line"><span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">    <span class="comment">//如果命令有key最好把key也在错误日志打印出来，对于集群版来说通过key可以帮助定位到具体节点。</span></span><br><span class="line">    logger.error(e.getMessage(), e);</span><br><span class="line">&#125; </span><br><span class="line"><span class="keyword">finally</span> &#123;</span><br><span class="line">    <span class="comment">//注意这里不是关闭连接，在JedisPool模式下，Jedis会被归还给资源池。</span></span><br><span class="line">    <span class="keyword">if</span> (jedis != <span class="literal">null</span>) &#123;</span><br><span class="line">    	jedis.close();</span><br><span class="line">    &#125;    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>具体还有一些<strong>其他原因</strong>导致无法获得连接，例如：业务并发量大，而maxTotal值设置得过小；Jedis连接被拒绝，一般是由于Redis的域名配置或网络问题等原因导致。</p>
+<h2 id="2-3-redis速度快的原因"><a href="#2-3-redis速度快的原因" class="headerlink" title="2.3 redis速度快的原因"></a>2.3 redis速度快的原因</h2><p><strong>纯内存操作</strong>，避免大量访问数据库，减少直接读取磁盘数据，redis 将数据储存在内存里面，读写数据的时候都不会受到硬盘 I&#x2F;O 速度的限制，所以速度快；</p>
+<p><strong>单线程操作</strong>，避免了不必要的上下文切换和竞争条件，也不存在多进程或者多线程导致的切换而消耗 CPU，不用去考虑各种锁的问题，不存在加锁释放锁操作，没有因为可能出现死锁而导致的性能消耗；</p>
+<p>采用了<strong>非阻塞I&#x2F;O多路复用机制</strong>，采用多路 I&#x2F;O 复用技术可以让单个线程高效的处理多个连接请求（尽量减少网络 IO 的时间消耗），多路I&#x2F;O复用模型是利用 select、poll、epoll 可以同时监察多个流的 I&#x2F;O 事件的能力，在空闲的时候，会把当前线程阻塞掉，当有一个或多个流有 I&#x2F;O 事件时，就从阻塞态中唤醒，于是程序就会轮询一遍所有的流（epoll 是只轮询那些真正发出了事件的流），并且只依次顺序的处理就绪的流，这种做法就避免了大量的无用操作，从而提高效率；</p>
+<p>灵活多样的<strong>数据结构</strong>，redis内部使用一个redisObject对象来表示所有的key和value。redisObject主要的信息包括数据类型、编码方式、数据指针、虚拟内存等。它包含String，Hash，List，Set，Sorted Set五种数据类型，针对不同的场景使用对应的数据类型，减少内存使用的同时，节省网络流量传输。</p>
+<h2 id="2-4-持久化实现"><a href="#2-4-持久化实现" class="headerlink" title="2.4 持久化实现"></a>2.4 持久化实现</h2><p>Redis持久化有两种实现方式：</p>
+<p><strong>RDB</strong>（指定的时间间隔内保存数据快照）</p>
+<p>全称<code>Redis Database Backup file</code>（Redis数据备份文件），也被叫做<strong>Redis数据快照</strong>。我们可以通过执行<code>save</code>或<code>bgsave</code>命令让Redis在本地生成RDB快照文件，这个RDB文件包含了整个实例接近完整的数据内容。</p>
+<p><strong>AOF</strong>（先把命令追加到操作日志的尾部，保存所有的历史操作）</p>
+<p>全称为<code>Append Only File</code>（追加日志文件）。它与RDB不同的是，AOF中记录的是每一个命令的详细信息，包括完整的命令类型、参数等。只要产生写命令，就会实时写入到AOF文件中。</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>RDB</th>
+<th>AOF</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>持久化方式</td>
+<td>生成某一时刻的数据快照文件</td>
+<td>实时记录每一个写命令到文件</td>
+</tr>
+<tr>
+<td>数据完整性</td>
+<td>不完整，取决于备份周期</td>
+<td>相对完整性高，取决于文件刷盘方式</td>
+</tr>
+<tr>
+<td>文件大小</td>
+<td>压缩二进制写入，文件较小</td>
+<td>原始的操作命令，文件大</td>
+</tr>
+<tr>
+<td>宕机恢复时间</td>
+<td>快</td>
+<td>慢</td>
+</tr>
+<tr>
+<td>恢复优先级</td>
+<td>低</td>
+<td>高</td>
+</tr>
+<tr>
+<td>持久化代价</td>
+<td>高，消耗大量CPU和内存</td>
+<td>低，只占用磁盘IO资源</td>
+</tr>
+<tr>
+<td>使用场景</td>
+<td>数据备份、主从全量复制、对丢数据不敏感的业务场景快速数据恢复</td>
+<td>对于丢失数据敏感的场景，例如涉及金钱交易相关的业务</td>
+</tr>
+</tbody></table>
+<h2 id="2-5-高可用实现"><a href="#2-5-高可用实现" class="headerlink" title="2.5 高可用实现"></a>2.5 高可用实现</h2><p>Redis高可用的几种常见方式如下：</p>
+<p><strong>Redis多副本（主从复制）</strong></p>
+<p>Redis多副本，采用主从（replication）部署结构，相较于单副本而言最大的特点就是主从实例间数据实时同步，并且提供数据持久化和备份策略。主从实例部署在不同的物理服务器上，根据公司的基础环境配置，可以实现同时对外提供服务和读写分离策略。</p>
+<p><strong>Redis Sentinel（哨兵）</strong></p>
+<p>Redis Sentinel是社区版本推出的原生高可用解决方案，其部署架构主要包括两部分：Redis Sentinel集群和Redis数据集群。</p>
+<p>其中Redis Sentinel集群是由若干Sentinel节点组成的分布式集群，可以实现故障发现、故障自动转移、配置中心和客户端通知。Redis Sentinel的节点数量要满足2n+1（n&gt;&#x3D;1）的奇数个。</p>
+<p><strong>Redis Cluster（Redis集群）</strong></p>
+<p>Redis Cluster是社区版推出的Redis分布式集群解决方案，主要解决Redis分布式方面的需求，比如，当遇到单机内存，并发和流量等瓶颈的时候，Redis Cluster能起到很好的负载均衡的目的。</p>
+<p>Redis Cluster集群节点最小配置6个节点以上（3主3从），其中主节点提供读写操作，从节点作为备用节点，不提供请求，只作为故障转移使用。</p>
+<p>Redis Cluster采用虚拟槽分区，所有的键根据哈希函数映射到0～16383个整数槽内，每个节点负责维护一部分槽以及槽所印映射的键值数据。</p>
+
+      </section>
+
+    </article>
+    
+    
+
+
+    <!-- 版权声明 -->
+    <div class="post-copyright">
+	<div>
+		<strong>本文作者：</strong>
+		<span>
+			zsbo
+		</span>
+	</div>
+	<div>
+		<strong>本文链接：</strong>
+		<a href="http://rekamgub.gitee.io/articles/9dj6bd35615">
+			http://rekamgub.gitee.io/articles/9dj6bd35615
+		</a>
+	</div>
+	<div>
+		<span>欢迎任何形式的转载，但请务必注明出处。</span>
+	</div>
+	<div>
+		<span>由于笔者水平有限，如果文章或代码有表述不当之处，还请不吝赐教。</span>
+	</div>
+</div>
+
+
+<style>
+	.post-copyright {
+		background-color: #fff;
+		/* box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.05); */
+		box-shadow: 0 6px 30px -10px rgba(0, 0, 0, 0.1);
+		display: block;
+		margin: 20px auto;
+		margin-bottom: 15px;
+		padding: 10px;
+		font-size: 15px;
+		color: #2e2d2d;
+		word-break: break-all;
+		line-height: 1.8;
+	}
+
+
+	.post-copyright a {
+		color: #2e2d2d;
+		border-bottom: 1px solid #999;
+	}
+
+	.post-copyright a:hover {
+		color: #2e2d2d;
+		border-bottom: 1px solid #000;
+	}
+</style>
+
+    <!-- comments -->
+    <div class="comments">
+    <h3 id="commenttitle" style="margin-top: 20px;margin-left: 10px;">评论区</h3>
+    <div id="tcomment"></div>
+</div>
+<script src="https://cdn.staticfile.org/twikoo/1.6.10/twikoo.all.min.js"></script>
+<script>twikoo.init({ envId: 'https://comment.rekamgub.xyz', el: '#tcomment' })</script>
+
+    <div class="right-icon">
+      <div id="to-valine" class="right-icon-item">
+        <a href="#commenttitle">评论</a>
+      </div>
+    </div>
+
+  </div>
+
+
+  <aside>
+    <div class="aside-wrap">
+    
+        <section class="widget-wrap">
+    <h3 class="widget-title">简介</h3>
+    <div class="widget">
+        <div class="notice">
+            <img class="notice-img" src="https://gitee.com/rekamgub/image/raw/master/blog/edge.jpg">
+            <p>一个后端程序员的<br>编程笔记和生活记录！</p>
+            
+            <p class="notice-item">
+                <!-- github -->
+                <span><a target="_blank" href="https://github.com/zhaoshaobo12138"><img src="https://gitee.com/rekamgub/image/raw/master/blog/cad626bf01bd4015aad1815fa9ad64ed.png" alt="Github"></a></span>
+                <!-- juejin -->
+                <span><a target="_blank" href="https://juejin.cn/user/3210229685698430/posts"><img src="https://gitee.com/rekamgub/image/raw/master/blog/apple-touch-icon.png" alt="掘金社区"></a></span>
+                <!-- zhihu -->
+                <span><a target="_blank" href="https://www.zhihu.com"><img src="https://gitee.com/rekamgub/image/raw/master/blog/apple-touch-icon-152.81060cab.png" alt="知乎"></a></span>
+                <!-- csdn -->
+                <span><a target="_blank" href="https://blog.csdn.net/ZSH_jerry"><img src="https://gitee.com/rekamgub/image/raw/master/blog/favicon32.png" alt="CSDN"></a></span>
+            </p>
+
+            <ul class="statistics">
+                <li>
+                    <span>文章</span>
+                    <a href="./archives">2</a>
+                </li>
+                <li>
+                    <span>字数</span>
+                    <a>3.3k</a>
+                </li>
+                <li>
+                    <span>访客</span>
+                    <a id="busuanzi_value_site_uv"></a>
+                </li>
+                
+                
+            </ul>
+
+            <div id="follow" class="button">
+                <a target="_blank" href="https://github.com/zhaoshaobo12138">关注</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+    
+        
+  <section class="widget-wrap">
+    <h3 class="widget-title">文章分类</h3>
+    <div class="widget">
+      <div class="categories-list">
+        
+           
+            
+              <a class="category-list-item" href="/categories/分类">
+                <span class="category-list-link">分类</span>
+                <span class="category-list-number">(1)</span>
+              </a>
+            
+          
+        
+      </div>
+    </div>
+  </section>
+
+
+    
+        
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%87%E7%AD%BE/" rel="tag">标签</a></li></ul>
+    </div>
+  </div>
+
+
+    
+        
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul class="recent-posts">
+        
+          <li>
+            <a href="/articles/9647dbe071g/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/articles/9dj6bd35615/">8月代码文档</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+        
+  <section class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/03/">March 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">March 2023</a></li></ul>
+    </div>
+  </section>
+
+
+    
+        <!-- 
+  <section class="widget-wrap">
+    <h3 class="widget-title">友情链接</h3>
+    <div>
+      <ul class="widget-links">
+          
+          <li>
+              <a target="_blank" rel="noopener" href="https://www.shuxhan.com" title="">
+                  求索日记
+              </a>
+          </li>
+          
+      </ul>
+    </div>
+  </section>
+
+
+<style>
+  .widget-links {
+    list-style: none;
+    padding-left: 10px;
+  }
+  .widget-links >li > a:hover {
+    color: #f40;
+    text-decoration: underline;
+  }
+</style> -->
+    
+    
+</div>
+
+
+    <!-- 目录 -->
+    
+      <div id="toc"></div>
+      <script>
+        $(function () {
+          var elm = $('#toc');
+          var startPos = $(elm).offset().top;
+        $.event.add(window, "scroll", function () {
+          var p = $(window).scrollTop();
+          $(elm).css('margin-left', '0px');
+          $(elm).css('position', ((p) > startPos) ? 'fixed' : 'static');
+          $(elm).css('top', ((p) > startPos) ? '20px' : '')
+        })
+      })
+      </script>
+    
+  </aside>
+  
+</div>
+
+					</div>
+				</div>
+
+				<!-- 返回顶部按钮 -->
+				<div class="right-icon">
+					<div id="to-top" class="right-icon-item">
+						<a>
+							<span class="top-left"></span>
+							<span class="top-right"></span>
+						</a>
+					</div>
+				</div>
+		</div>
+		<footer class="footer">
+
+    <div class="copyright-wrap">
+      <span>&copy; 2023-2025 zsbo</span>
+      <span id="timeDate">载入天数...</span><span id="busuanzi_container_site_pv">
+      总访问量<span id="busuanzi_value_site_pv"></span>次
+    </span>
+    
+</div>
+    
+    
+    <!-- <span id="busuanzi_container_site_uv">
+      ，本站访客数<span id="busuanzi_value_site_uv"></span>人次
+    </span> -->
+    
+</footer>
+
+<script>
+    var now = new Date();
+    function createtime() {
+      var grt = new Date("03/17/2023 12:00:00");//此处修改你的建站时间或者网站上线时间 
+      now.setTime(now.getTime() + 250);
+      days = (now - grt) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+      document.getElementById("timeDate").innerHTML = "本站已安全运行 " + dnum + " 天 ";
+    }
+    setInterval("createtime()", 1000);
+</script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<script src="/lib/jquery.js"></script>
+
+
+<script src="/lib/waves.js"></script>
+
+
+<script src="/lib/jquery-ui.js"></script>
+
+
+<script src="/lib/jquery.tocify.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+
+			
+<style>
+  .copy-btn {
+    display: inline-block;
+    padding: 6px 12px;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 20px;
+    color: rgb(206, 206, 206);
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    border-radius: 3px;
+    user-select: none;
+    outline: 0;
+  }
+
+  .copy-btn:hover {
+    color: #888
+  }
+
+  .highlight-wrap .copy-btn {
+    padding: 2px 6px;
+    position: absolute;
+    right: 10px;
+    top: 1px;
+    z-index: 1;
+  }
+
+
+
+  .highlight-wrap {
+    position: relative;
+  }
+
+  #copysuccess {
+    width: 200px;
+    height: 75px;
+    position: fixed;
+    right: 50%;
+    margin-right: -100px;
+    top: 40%;
+    margin-top: -40px;
+    color: #fff;
+    font-weight: 600;
+    background: #444444d8;
+    display: none;
+    z-index: 99999;
+    border-radius: 10px;
+    text-align: center;
+    line-height: 30px;
+    padding-top: 10px;
+    user-select: none;
+  }
+</style>
+
+<script>
+  addLoadEvent(() => {
+    $('.highlight').each(function (i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap')
+      $(e).after($wrap)
+      $wrap.append($('<div>').addClass('copy-btn').append('复制代码').on('click', function (e) {
+        var copysuccess = document.getElementById('copysuccess');
+        copysuccess.style.display = 'block'
+        setTimeout(function () {
+          copysuccess.style.display = 'none'
+        }, 2000)
+        var code = $(this).parent().find(".code")[0].innerText
+          
+                var ta = document.createElement('textarea')
+        document.body.appendChild(ta)
+        ta.style.position = 'absolute'
+        ta.style.top = '0px'
+        ta.style.left = '0px'
+        ta.value = code
+        ta.select()
+        ta.focus()
+        var result = document.execCommand('copy')
+        document.body.removeChild(ta)
+          
+                  if (result) $(this).text('复制成功')
+            else $(this).text('复制失败')
+              
+                $(this).blur()
+      })).on('mouseleave', function (e) {
+        var $b = $(this).find('.copy-btn')
+        setTimeout(function () {
+          $b.text('复制代码')
+        }, 1000)
+      }).append(e)
+    })
+  })
+</script>
+
+				<div id="copysuccess">复制成功<br>欢迎阅读文章~</div>
+	</body>
+
+</html>
+
+<script>
+	$('#to-top').click(function () { $('html,body').animate({ scrollTop: '0px' }, 500); return false; });
+</script>
